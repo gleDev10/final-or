@@ -22,7 +22,7 @@
       </div>
     </div>
     <div v-else-if="produtos && produtos.length === 0">
-      <p class="sem-resultados">Buaca sem resultados. Tente buscar outro termo.</p>
+      <p class="sem-resultados">Busca sem resultados. Tente buscar outro termo.</p>
     </div>
   </section>
 </template>
