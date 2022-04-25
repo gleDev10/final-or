@@ -1,36 +1,45 @@
 <template>
   <section class="produtos-container">
-    <div
-      v-if="produtos && produtos.length"
-      class="produtos"
-    >
+    <transition mode="out-in">
       <div
-        class="produto"
-        v-for="produto in produtos"
-        :key="produto.id"
+        v-if="produtos && produtos.length"
+        class="produtos"
+        :key=produtos
       >
-        <router-link to="/">
-          <img
-            v-if="produto.fotos"
-            :src="produto.fotos[0].src"
-            :alt="produto.fotos[0].titulo"
-          >
-          <p class="preco">{{produto.preco}}</p>
-          <h2 class="titulo">{{produto.nome}}</h2>
-          <p>{{produto.descricao}}</p>
-        </router-link>
+        <div
+          class="produto"
+          v-for="produto in produtos"
+          :key="produto.id"
+        >
+          <router-link to="/">
+            <img
+              v-if="produto.fotos"
+              :src="produto.fotos[0].src"
+              :alt="produto.fotos[0].titulo"
+            >
+            <p class="preco">{{produto.preco}}</p>
+            <h2 class="titulo">{{produto.nome}}</h2>
+            <p>{{produto.descricao}}</p>
+          </router-link>
+        </div>
+        <ProductPagination
+          :produtosTotal="produtosTotal"
+          :produtosPorPagina="produtosPorPagina"
+        />
       </div>
-      <ProductPagination
-        :produtosTotal="produtosTotal"
-        :produtosPorPagina="produtosPorPagina"
+      <div
+        v-else-if="produtos && produtos.length === 0"
+        :key=sem-resultados
+      >
+        <p class="sem-resultados">Busca sem resultados. Tente buscar outro termo.</p>
+      </div>
+
+      <LoadingAnimation
+        v-else
+        :key=carregando
       />
-    </div>
-    <div v-else-if="produtos && produtos.length === 0">
-      <p class="sem-resultados">Busca sem resultados. Tente buscar outro termo.</p>
-    </div>
-    <div v-else>
-      <LoadingAnimation />
-    </div>
+    </transition>
+
   </section>
 </template>
 
