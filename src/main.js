@@ -4,4 +4,20 @@ import router from './router'
 import store from './store'
 import LoadingAnimation from '@/components/LoadingAnimation'
 
-createApp(App).use(store).use(router).component("LoadingAnimation", LoadingAnimation).mount('#app')
+
+const app = createApp(App)
+
+app.component("LoadingAnimation", LoadingAnimation)
+app.config.globalProperties.$filters = {
+  numeroPreco (valor) {
+    valor = Number(valor)
+    if (!isNaN(valor)) {
+      return valor.toLocaleString("pt-br", { style: "currency", currency: "BRL" })
+    } else {
+      return ""
+    }
+  }
+}
+app.use(store).use(router)
+
+app.mount('#app')
