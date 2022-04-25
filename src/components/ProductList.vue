@@ -28,13 +28,17 @@
     <div v-else-if="produtos && produtos.length === 0">
       <p class="sem-resultados">Busca sem resultados. Tente buscar outro termo.</p>
     </div>
+    <div v-else>
+      <LoadingAnimation />
+    </div>
   </section>
 </template>
 
 <script>
-import ProductPagination from '@/components/ProductPagination'
 import { api } from '@/services/api.js'
 import { serialize } from '@/helpers.js'
+
+import ProductPagination from '@/components/ProductPagination'
 
 export default {
   name: "ProductList",
@@ -51,11 +55,12 @@ export default {
   computed: {
     url () {
       const query = serialize(this.$route.query)
-      return `/produto?limit=${produtosPorPagina}${query}`
+      return `/produto?limit=${this.produtosPorPagina}${query}`
     }
   },
   methods: {
     getProdutos () {
+      this.produtos = null
       api.get(this.url).then(response => {
         this.produtosTotal = response.headers['x-total-count']
         this.produtos = response.data

@@ -1,5 +1,5 @@
 <template>
-  <ul>
+  <ul v-if="paginasTotal > 1">
     <li
       v-for="pagina in paginas"
       :key="pagina"
@@ -37,7 +37,7 @@ export default {
       const total = this.paginasTotal
       const pagesArr = []
       for (let i = 0; i < total; i++) {
-        array.push([i]);
+        pagesArr.push([i]);
       }
       pagesArr.splice(0, currentPage - offset)
       pagesArr.splice(range, total)

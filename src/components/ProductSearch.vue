@@ -26,7 +26,7 @@ export default {
   },
   methods: {
     buscaProdutos () {
-      this.$route.push({ query: { q: this.busca } })
+      this.$router.push({ query: { q: this.busca } })
     }
   }
 }
@@ -50,7 +50,7 @@ form {
 #lupa {
   width: 62px;
   height: 62px;
-  background-image: url("../assets/search.svg") no-repeat center center;
+  background: url("../assets/search.svg") no-repeat center center;
   text-indent: -150px;
   border: none;
   cursor: pointer;
