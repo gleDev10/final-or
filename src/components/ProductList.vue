@@ -11,13 +11,13 @@
           v-for="produto in produtos"
           :key="produto.id"
         >
-          <router-link to="/">
+          <router-link :to="{name: 'produto', params:{id: produto.id}}">
             <img
               v-if="produto.fotos"
               :src="produto.fotos[0].src"
               :alt="produto.fotos[0].titulo"
             >
-            <p class="preco">{{produto.preco}}</p>
+            <p class="preco">{{$filters.numeroPreco(produto.preco)}}</p>
             <h2 class="titulo">{{produto.nome}}</h2>
             <p>{{produto.descricao}}</p>
           </router-link>
@@ -47,7 +47,7 @@
 import { api } from '@/services/api.js'
 import { serialize } from '@/helpers.js'
 
-import ProductPagination from '@/components/ProductPagination'
+import ProductPagination from '@/components/ProductPagination.vue'
 
 export default {
   name: "ProductList",

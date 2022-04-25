@@ -6,8 +6,9 @@
   <FooterPrimary />
 </template>
 <script>
-import HeaderPrimary from '@/components/HeaderPrimary'
-import FooterPrimary from '@/components/FooterPrimary'
+
+import HeaderPrimary from '@/components/HeaderPrimary.vue'
+import FooterPrimary from '@/components/FooterPrimary.vue'
 
 
 export default {

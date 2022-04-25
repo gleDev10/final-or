@@ -1,7 +1,10 @@
 <template>
   <header>
     <nav>
-      <route-link class="logo">
+      <route-link
+        class="logo"
+        to="/"
+      >
         <img
           src="@/assets/ranek.svg"
           alt="Ranek"
