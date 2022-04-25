@@ -1,7 +1,9 @@
 <template>
   <HeaderPrimary />
   <main id="main">
-    <router-view />
+    <transition mode="out-in">
+      <router-view />
+    </transition>
   </main>
   <FooterPrimary />
 </template>
@@ -72,6 +74,9 @@ img {
 }
 #main {
   flex: 1;
+}
+label {
+  margin-bottom: 5px;
 }
 input,
 textarea {

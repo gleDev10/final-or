@@ -1,14 +1,36 @@
+import { api } from '@/services/api';
 import { createStore } from 'vuex'
 
 export default createStore({
   state: {
-  },
-  getters: {
+    login: false,
+    usuario: {
+      id: "",
+      nome: "",
+      email: "",
+      senha: "",
+      cep: "",
+      rua: "",
+      numero: "",
+      bairro: "",
+      cidade: "",
+      estado: ""
+    }
   },
   mutations: {
+    UPDATE_LOGIN (state, payload) {
+      state.login = payload;
+    },
+    UPDATE_USUARIO (state, payload) {
+      state.usuario = payload
+    }
   },
   actions: {
-  },
-  modules: {
+    getUsuario (context, payload) {
+      api.get(`/usuario/${payload}`).then(response => {
+        context.commit("UPDATE_USUARIO", response.data)
+        context.commit("UPDATE_LOGIN", true)
+      })
+    }
   }
 })
