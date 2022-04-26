@@ -49,6 +49,10 @@ img {
   max-width: 100%;
   display: block;
 }
+button {
+  cursor: pointer;
+  font-family: "Avenir", Arial, Helvetica, sans-serif;
+}
 .btn {
   display: block;
   padding: 10px 30px;
