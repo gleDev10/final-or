@@ -9,7 +9,10 @@
           class="btn"
         >Criar Conta</button>
         <UsuarioForm v-else>
-          <button class="btn btn-form">Criar usuário</button>
+          <button
+            class="btn btn-form"
+            @click.prevent="criarUsuario"
+          >Criar usuário</button>
         </UsuarioForm>
       </div>
     </transition>
@@ -27,6 +30,11 @@ export default {
   data () {
     return {
       criar: true
+    }
+  },
+  methods: {
+    criarUsuario () {
+      this.$store.dispatch("criarUsuario", this.$store.state.usuario)
     }
   }
 }

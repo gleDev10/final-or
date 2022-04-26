@@ -2,6 +2,7 @@ import { api } from '@/services/api';
 import { createStore } from 'vuex'
 
 export default createStore({
+  strict: true,
   state: {
     login: false,
     usuario: {
@@ -22,7 +23,7 @@ export default createStore({
       state.login = payload;
     },
     UPDATE_USUARIO (state, payload) {
-      state.usuario = payload
+      state.usuario = Object.assign({}, state.usuario, payload)
     }
   },
   actions: {
@@ -31,6 +32,10 @@ export default createStore({
         context.commit("UPDATE_USUARIO", response.data)
         context.commit("UPDATE_LOGIN", true)
       })
+    },
+    criarUsuario (context, payload) {
+      context.commit("UPDATE_USUARIO", { id: payload.email })
+      api.post('/usuario', payload)
     }
   }
 })
