@@ -26,6 +26,7 @@
         </div>
       </div>
     </div>
+     <LoadingAnimation v-else />
   </section>
 </template>
 
@@ -94,7 +95,7 @@ h3 {
     grid-gap: 10px;
   }
   h3 {
-  justify-content: start;
-}
+    justify-content: start;
+  }
 }
 </style>

@@ -61,7 +61,7 @@ export default {
       }
     },
     finalizarCompra () {
-               this.erros = []
+      this.erros = []
       if (this.$store.state.login) {
         this.criarTransacao()
 

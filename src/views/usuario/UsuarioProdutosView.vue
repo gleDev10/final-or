@@ -22,6 +22,7 @@
         </ProdutoItem>
       </li>
     </transition-group>
+     <LoadingAnimation v-else />
   </section>
 </template>
 

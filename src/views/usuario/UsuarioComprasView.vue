@@ -15,6 +15,7 @@
         </ProdutoItem>
       </div>
     </div>
+     <LoadingAnimation v-else />
   </section>
 </template>
 

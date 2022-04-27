@@ -35,7 +35,7 @@ export default createStore({
   },
   actions: {
     getUsuarioProdutos (context) {
-      api.get(`/produto?usuario_id=${context.state.usuario.id}`).then(response => {
+      return api.get(`/produto?usuario_id=${context.state.usuario.id}`).then(response => {
         context.commit("UPDATE_USUARIO_PRODUTOS", response.data)
       })
     },

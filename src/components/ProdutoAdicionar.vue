@@ -35,6 +35,7 @@
       value="Adicionar Produto"
       @click.prevent="adicionarProduto"
     >
+    
   </form>
 </template>
 
@@ -50,7 +51,8 @@ export default {
         descricao: "",
         fotos: null,
         vendido: "false"
-      }
+      },
+      loading: false
     }
   },
   methods: {
@@ -73,11 +75,19 @@ export default {
 
       return form;
     },
-    adicionarProduto () {
-      const produto = this.formatarProduto()
-      api.post("/produto", produto).then(() => {
-        this.$store.dispatch("getUsuarioProdutos")
-      })
+    async adicionarProduto (event) {
+      const produto = this.formatarProduto();
+
+      const btn = event.currentTarget;
+      btn.value = "Adicionando...";
+      btn.setAtrribute("disabled", "")
+
+      await api.post("/produto", produto);
+      await this.$store.dispatch("getUsuarioProdutos");
+
+      btn.value = "Adicionar Produto";
+      btn.removeAtrribute("disabled")
+
     }
   }
 }
