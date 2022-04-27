@@ -12,7 +12,6 @@
         :src="produto.fotos[0]"
         :alt="produto[0].titulo"
       >
-      Ver Produto
     </router-link>
     <div class="info">
       <p class="preco">{{$filters.numeroPreco(produto.preco)}}</p>
