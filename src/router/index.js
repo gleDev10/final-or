@@ -68,7 +68,7 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.login)) {
     if (!window.localStorage.token) {
-      next('/login')
+      next({ name: 'login' })
     } else {
       next();
     }
