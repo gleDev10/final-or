@@ -37,6 +37,7 @@ form {
   max-width: 600px;
   margin: 30px auto 60px;
   position: relative;
+  padding: 0 10px;
 }
 #busca {
   width: 100%;

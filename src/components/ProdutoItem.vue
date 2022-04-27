@@ -36,6 +36,12 @@ export default {
   margin-bottom: 40px;
   position: relative;
 }
+@media screen and (max-width: 500px){
+  .produtos{
+    grid-template-columns: 1fr;
+    grid-gap: 10px;
+  }
+}
 .info {
   align-self: end;
 }
