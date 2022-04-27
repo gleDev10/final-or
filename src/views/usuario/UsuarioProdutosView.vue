@@ -57,6 +57,8 @@ export default {
     if (this.login) {
       this.getUsuarioProdutos()
     }
+          document.title = "Painel do Usuário | Produtos"
+
   }
 }
 </script>

@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import NotFoundView from '../views/NotFoundView.vue'
 
 import ProductView from '../views/ProductView.vue'
 import LoginView from '../views/LoginView.vue'
@@ -10,6 +11,11 @@ import UsuarioComprasView from '../views/usuario/UsuarioComprasView.vue'
 import UsuarioVendasView from '../views/usuario/UsuarioVendasView.vue'
 
 const routes = [
+  {
+    path: '*',
+    name: 'paginanaoencontrada',
+    component: NotFoundView
+  },
   {
     path: '/',
     name: 'home',
@@ -55,6 +61,7 @@ const routes = [
       }
     ]
   }
+
 
 ]
 

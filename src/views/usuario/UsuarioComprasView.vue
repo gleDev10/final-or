@@ -52,6 +52,7 @@ export default {
     if (this.login) {
       this.getCompras();
     }
+      document.title = "Painel do Usuário | Compras"
   }
 }
 </script>

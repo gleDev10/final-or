@@ -33,6 +33,10 @@ export default {
         this.$router.push({ name: 'usuario' })
       }).catch(error => this.erros.push(error.response.data.message))
     }
+  },
+  created(){
+          document.title = "Painel do Usuário | Editar"
+
   }
 }
 </script>

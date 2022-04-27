@@ -15,6 +15,9 @@ export default {
   components: {
     ProductSearch,
     ProductList
+  },
+  created(){
+    document.title = "Ranek"
   }
 }
 </script>
