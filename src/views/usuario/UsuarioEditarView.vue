@@ -1,5 +1,6 @@
 <template>
   <section>
+    <ErroNotificacao :erros="erros" />
     <UsuarioForm>
       <button
         class="btn"
@@ -19,12 +20,18 @@ export default {
   components: {
     UsuarioForm
   },
+  data(){
+    return{
+      erros: []
+    }
+  },
   methods: {
     atualizarUsuario () {
+      this.erros = []
       api.put('/usuario', this.$store.usuario).then(() => {
         this.$store.dispatch("getUsuario")
         this.$router.push({ name: 'usuario' })
-      }).catch(error => console.warn(error.response))
+      }).catch(error => this.erros.push(error.response.data.message))
     }
   }
 }

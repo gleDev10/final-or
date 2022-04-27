@@ -20,10 +20,11 @@
         class="btn"
         @click.prevent="logar"
       >Logar</button>
+      <ErroNotificao :erros="erros" />
     </form>
     <p class="forgot">
       <a
-        href="/"
+        href="http://localhost/origamid/wordpress-rest-api/ranek/wp-login.php?action=lostpassword"
         target="_blank"
       >Perdeu a senha? Clique aqui</a>
     </p>
@@ -36,21 +37,26 @@ import LoginCriar from "@/components/LoginCriar"
 export default {
   name: "LoginView",
   components: {
-    LoginCriar
+    LoginCriar,
   },
   data () {
     return {
       login: {
         email: "",
         senha: ""
-      }
+      },
+      erros: []
     }
   },
   methods: {
-    async logar () {
-      await this.$store.dispatch("logarUsuario", this.login)
-      await this.$store.dispatch("getUsuario")
-      await this.$router.push({ name: "usuario" })
+    logar () {
+      this.erros = []
+       this.$store.dispatch("logarUsuario", this.login).then(() => {
+         this.$store.dispatch("getUsuario")
+         this.$router.push({ name: "usuario" })
+       }).catch(error =>{
+         this.erros.push(error.response.data.message)
+       })
     }
   }
 }
