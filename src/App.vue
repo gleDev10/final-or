@@ -11,12 +11,22 @@
 
 import HeaderPrimary from '@/components/HeaderPrimary.vue'
 import FooterPrimary from '@/components/FooterPrimary.vue'
+import { api } from './services/api'
 
 
 export default {
   components: {
     HeaderPrimary,
     FooterPrimary
+  },
+  created(){
+    if(window.localStorage.token){
+      api.validateToken().then(() => {
+        this.$store.dispatch("getUsuario")
+      }).catch(() => {
+        window.localStorage.removeItem("token")
+      })
+    }
   }
 }
 </script>

@@ -32,7 +32,7 @@ export const api = {
     return axios.post("http://localhost/origamid/wordpress-rest-api/ranek/wp-json/jwt-auth/v1/token", body)
   },
   validateToken () {
-    return axios.post("http://localhost/origamid/wordpress-rest-api/ranek/wp-json/jwt-auth/v1/validade")
+    return axiosInstance.post("http://localhost/origamid/wordpress-rest-api/ranek/wp-json/jwt-auth/v1/validade")
   }
 }
 

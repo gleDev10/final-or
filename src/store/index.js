@@ -69,6 +69,7 @@ export default createStore({
           estado: ""
         }
       })
+      window.localStorage.removeItem("token")
       context.commit("UPDATE_LOGIN", false)
     }
   }
