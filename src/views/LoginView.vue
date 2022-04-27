@@ -47,9 +47,10 @@ export default {
     }
   },
   methods: {
-    logar () {
-      this.$store.dispatch("getUsuario", this.login.email)
-      this.$router.push({ name: "usuario" })
+    async logar () {
+      await this.$store.dispatch("logarUsuario", this.login)
+      await this.$store.dispatch("getUsuario")
+      await this.$router.push({ name: "usuario" })
     }
   }
 }
