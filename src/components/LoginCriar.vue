@@ -37,8 +37,11 @@ export default {
     }
   },
   methods: {
-    async criarUsuario () {
+    async criarUsuario (event) {
        this.erros = []
+        const btn = event.currentTarget;
+      btn.value = "Criando...";
+      btn.setAtrribute("disabled", "")
       try {
         await this.$store.dispatch("criarUsuario", this.$store.state.usuario)
         await this.$store.dispatch("logarUsuario", this.$store.state.usuario)
@@ -47,7 +50,8 @@ export default {
       } catch (error) {
           this.erros.push(error.response.data.message)
       }
-
+      btn.value = "Criar usuário";
+      btn.removeAtrribute("disabled")
     }
   }
 }
